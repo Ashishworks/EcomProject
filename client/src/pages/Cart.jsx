@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom"
 import { Trash2, Plus, Minus, ShoppingBag } from "lucide-react"
 import { useCart } from "../context/CartContext"
+import SpotlightCard from "../animations/SpotLightCard"
 
 const Cart = () => {
   const { cartItems, loading, updateCartItem, removeFromCart, clearCart, getCartTotal } = useCart()
@@ -52,7 +53,9 @@ const Cart = () => {
           {cartItems
             .filter((item) => item && item.product) // ✅ null checks
             .map((item) => (
-              <div key={item.product._id} className="card p-4">
+              
+              <div key={item.product._id} className="card">
+                <SpotlightCard spotlightColor="rgba(5, 220, 244, 1)">
                 <div className="flex items-center space-x-4">
                   <img
                     src={item.product.image || "/placeholder.svg"}
@@ -63,36 +66,36 @@ const Cart = () => {
                   <div className="flex-1">
                     <Link
                       to={`/products/${item.product._id}`}
-                      className="text-lg font-semibold text-gray-900 hover:text-primary-600 transition-colors"
+                      className="text-lg font-semibold text-white hover:text-primary-600 transition-colors"
                     >
                       {item.product.name}
                     </Link>
-                    <p className="text-gray-600 text-sm mt-1">
+                    <p className="text-white text-sm mt-1">
                       ₹{item.product.price.toLocaleString()} each
                     </p>
                   </div>
 
                   <div className="flex items-center space-x-3">
-                    <div className="flex items-center border border-gray-300 rounded-lg">
+                    <div className="flex items-center border border-white rounded-lg">
                       <button
                         onClick={() =>
                           handleQuantityChange(item.product._id, item.quantity - 1)
                         }
-                        className="p-2 hover:bg-gray-100 transition-colors"
+                        className="p-2 hover:bg-white transition-colors"
                       >
-                        <Minus className="w-4 h-4" />
+                        <Minus className="w-4 h-4 text-white" />
                       </button>
-                      <span className="px-4 py-2 border-x border-gray-300 min-w-16 text-center">
+                      <span className="px-4 py-2 border-x border-white min-w-16 text-center text-white">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() =>
                           handleQuantityChange(item.product._id, item.quantity + 1)
                         }
-                        className="p-2 hover:bg-gray-100 transition-colors"
+                        className="p-2 hover:bg-white transition-colors"
                         disabled={item.quantity >= item.product.stock}
                       >
-                        <Plus className="w-4 h-4" />
+                        <Plus className="w-4 h-4 text-white" />
                       </button>
                     </div>
 
@@ -106,14 +109,16 @@ const Cart = () => {
                 </div>
 
                 <div className="mt-4 flex justify-between items-center">
-                  <span className="text-sm text-gray-600">
+                  <span className="text-sm text-white">
                     Subtotal: ₹{(item.product.price * item.quantity).toLocaleString()}
                   </span>
                   {item.quantity >= item.product.stock && (
                     <span className="text-orange-600 text-sm">Maximum quantity reached</span>
                   )}
                 </div>
+                </SpotlightCard>
               </div>
+              
             ))}
         </div>
 

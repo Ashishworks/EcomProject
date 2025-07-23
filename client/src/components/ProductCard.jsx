@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { ShoppingCart, Star } from "lucide-react"
 import { useCart } from "../context/CartContext"
 import { BackgroundGradient } from "../animations/BackgroundGradient"
+import { CometCard } from "../animations/CometCard"
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart()
@@ -15,10 +16,13 @@ const ProductCard = ({ product }) => {
 
   return (
     <BackgroundGradient>
+      <CometCard>
     <div className="card hover:shadow-lg transition-shadow duration-300 m-2">
       
       <Link to={`/products/${product._id}`}>
+        
         <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-48 object-contain my-2" />
+        
       </Link>
       
       <div className="p-4">
@@ -60,6 +64,7 @@ const ProductCard = ({ product }) => {
         )}
       </div>
     </div>
+    </CometCard>
     </BackgroundGradient>
   )
 }

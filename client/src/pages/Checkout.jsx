@@ -79,7 +79,7 @@ const Checkout = () => {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_1234567890",
         amount: amount,
         currency: currency,
-        name: "ShopEasy",
+        name: "Curators Shop",
         description: "Order Payment",
         order_id: orderId,
         handler: async (response) => {

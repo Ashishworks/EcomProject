@@ -72,10 +72,10 @@ const Products = () => {
   return (
     <div className="space-y-8">
 
-      <div className="text-center bg-gray-100 py-2 rounded-3xl">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8 flex justify-center"><RotatingText
-          texts={['WELCOME TO THE BEST', 'ONLINE SHOPPING PLATFORM']} /></h1>
-        <p className="text-lg text-gray-600">Discover amazing products at great prices</p>
+      <div className="text-center bg-gray-200 py-2 rounded-3xl">
+        <h1 className="text-6xl font-bold text-gray-900 mb-8 flex justify-center"><RotatingText
+          texts={['WELCOME TO THE BEST', 'ONLINE SHOPPING PLATFORM', `CURATORS SHOP`]} /></h1>
+        
       </div>
       <div className="w-[200%] scale-50 origin-top-left bg-black text-white p-4 rounded-3xl mt-2">
         <div className="w-[83%] flex justify-center ">
@@ -86,7 +86,7 @@ const Products = () => {
 
       <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
         <form onSubmit={handleSearch} className="flex-1 max-w-md">
-          <div className="relative flex my-4">
+          <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-10" />
             <input
               type="text"

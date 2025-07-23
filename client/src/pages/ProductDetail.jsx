@@ -6,6 +6,7 @@ import { ArrowLeft, ShoppingCart, Star, Minus, Plus } from "lucide-react"
 import axios from "axios"
 import { useCart } from "../context/CartContext"
 import toast from "react-hot-toast"
+import { CometCard } from "../animations/CometCard"
 
 const ProductDetail = () => {
   const { id } = useParams()
@@ -73,12 +74,15 @@ const ProductDetail = () => {
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div className="space-y-4">
+        
+        <div className="space-y-3">
+          <CometCard>
           <img
             src={product.image || "/placeholder.svg"}
             alt={product.name}
             className="w-full h-96 lg:h-[500px] object-contain rounded-lg shadow-lg"
           />
+          </CometCard>
         </div>
 
         <div className="space-y-6">
