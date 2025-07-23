@@ -54,7 +54,7 @@ const Cart = () => {
             .filter((item) => item && item.product) // ✅ null checks
             .map((item) => (
               
-              <div key={item.product._id} className="card">
+              <div key={item.product._id} className="card p-2">
                 <SpotlightCard spotlightColor="rgba(5, 220, 244, 1)">
                 <div className="flex items-center space-x-4">
                   <img
@@ -123,38 +123,42 @@ const Cart = () => {
         </div>
 
         <div className="lg:col-span-1">
-          <div className="card p-6 sticky top-24">
-            <h2 className="text-xl font-bold text-gray-900 mb-4">Order Summary</h2>
+          
+          <div className="card sticky top-24 p-4">
+            <SpotlightCard>
+            <h2 className="text-xl font-bold text-white mb-4">Order Summary</h2>
 
             <div className="space-y-3 mb-6">
               <div className="flex justify-between">
-                <span className="text-gray-600">Subtotal</span>
-                <span className="font-medium">₹{total.toLocaleString()}</span>
+                <span className="text-white">Subtotal</span>
+                <span className="font-medium text-white">₹{total.toLocaleString()}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Shipping</span>
-                <span className="font-medium">Free</span>
+                <span className="text-white">Shipping</span>
+                <span className="font-medium text-white">Free</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Tax</span>
-                <span className="font-medium">₹{Math.round(total * 0.18).toLocaleString()}</span>
+                <span className="text-white">Tax</span>
+                <span className="font-medium text-white">₹{Math.round(total * 0.18).toLocaleString()}</span>
               </div>
               <div className="border-t pt-3">
-                <div className="flex justify-between text-lg font-bold">
+                <div className="flex justify-between text-lg font-bold text-white">
                   <span>Total</span>
                   <span>₹{Math.round(total * 1.18).toLocaleString()}</span>
                 </div>
               </div>
             </div>
 
-            <Link to="/checkout" className="w-full btn-primary text-center block">
+            <Link to="/checkout" className="w-full btn-primary text-center block bg-black rounded-2xl">
               Proceed to Checkout
             </Link>
 
-            <Link to="/products" className="w-full btn-secondary text-center block mt-3">
+            <Link to="/products" className="w-full btn-primary text-center block mt-3 bg-black rounded-2xl">
               Continue Shopping
             </Link>
+            </SpotlightCard>
           </div>
+          
         </div>
       </div>
     </div>
