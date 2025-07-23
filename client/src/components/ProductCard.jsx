@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom"
 import { ShoppingCart, Star } from "lucide-react"
 import { useCart } from "../context/CartContext"
+import { BackgroundGradient } from "../animations/BackgroundGradient"
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart()
@@ -13,10 +14,13 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <div className="card hover:shadow-lg transition-shadow duration-300">
+    <BackgroundGradient>
+    <div className="card hover:shadow-lg transition-shadow duration-300 m-2">
+      
       <Link to={`/products/${product._id}`}>
-        <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-48 object-contain" />
+        <img src={product.image || "/placeholder.svg"} alt={product.name} className="w-full h-48 object-contain my-2" />
       </Link>
+      
       <div className="p-4">
         <Link to={`/products/${product._id}`}>
           <h3 className="text-lg font-semibold text-gray-800 mb-2 hover:text-primary-600 transition-colors">
@@ -56,6 +60,7 @@ const ProductCard = ({ product }) => {
         )}
       </div>
     </div>
+    </BackgroundGradient>
   )
 }
 
