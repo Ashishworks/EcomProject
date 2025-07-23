@@ -7,6 +7,7 @@ import ProductCard from "../components/ProductCard"
 import toast from "react-hot-toast"
 import RotatingText from "../animations/RotatingText"
 import ScrollVelocity from "../animations/ScrollVelocity"
+import { BackgroundLines } from "../animations/BackgorundLines"
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -70,23 +71,23 @@ const Products = () => {
 
   return (
     <div className="space-y-8">
-      <div className="text-center bg-gray-200 py-2 rounded-3xl">
-        
-        <h1 className="text-4xl font-bold text-gray-900 mb-4 flex justify-center"><RotatingText
-        texts={['WELCOME TO THE BEST', 'ONLINE SHOPPING PLATFORM']}/></h1>
+
+      <div className="text-center bg-gray-100 py-2 rounded-3xl">
+        <h1 className="text-4xl font-bold text-gray-900 mb-8 flex justify-center"><RotatingText
+          texts={['WELCOME TO THE BEST', 'ONLINE SHOPPING PLATFORM']} /></h1>
         <p className="text-lg text-gray-600">Discover amazing products at great prices</p>
       </div>
-      <div className="w-[200%] scale-50 origin-top-left bg-black text-white p-4 rounded-3xl">
-        <div className="w-[100%] flex justify-center ">
-            <ScrollVelocity texts={['UPTO 50% OFF']}/>
+      <div className="w-[200%] scale-50 origin-top-left bg-black text-white p-4 rounded-3xl mt-2">
+        <div className="w-[83%] flex justify-center ">
+          <ScrollVelocity texts={['UPTO 50% OFF']} />
         </div>
-        
+
       </div>
 
       <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
         <form onSubmit={handleSearch} className="flex-1 max-w-md">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <div className="relative flex my-4">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-10" />
             <input
               type="text"
               placeholder="Search products..."
@@ -97,7 +98,7 @@ const Products = () => {
           </div>
         </form>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 z-10">
           <Filter className="w-5 h-5 text-gray-600" />
           <select
             value={selectedCategory}
@@ -147,11 +148,10 @@ const Products = () => {
               <button
                 key={page}
                 onClick={() => handlePageChange(page)}
-                className={`px-4 py-2 border rounded-lg ${
-                  currentPage === page
-                    ? "bg-primary-600 text-white border-primary-600"
-                    : "border-gray-300 hover:bg-gray-50"
-                }`}
+                className={`px-4 py-2 border rounded-lg ${currentPage === page
+                  ? "bg-primary-600 text-white border-primary-600"
+                  : "border-gray-300 hover:bg-gray-50"
+                  }`}
               >
                 {page}
               </button>
@@ -167,6 +167,7 @@ const Products = () => {
           </button>
         </div>
       )}
+
     </div>
   )
 }
