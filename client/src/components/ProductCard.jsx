@@ -51,7 +51,7 @@ const ProductCard = ({ product }) => {
           <span className="text-xl font-bold text-primary-600">₹{product.price.toLocaleString()}</span>
           <button
             onClick={handleAddToCart}
-            className="flex items-center btn-primary text-sm"
+            className="flex items-center btn-primary text-sm bg-black"
             disabled={product.stock === 0}
           >
             <ShoppingCart className="w-4 h-4 mr-1" />
