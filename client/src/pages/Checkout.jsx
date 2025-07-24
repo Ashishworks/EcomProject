@@ -1,4 +1,3 @@
-"use client"
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
@@ -9,7 +8,7 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import { PinContainer } from "../animations/PinContainer"
 
-const API = import.meta.env.VITE_API_URL // ✅ Base backend URL
+const API = import.meta.env.VITE_API_URL 
 
 const Checkout = () => {
   const [shippingAddress, setShippingAddress] = useState({

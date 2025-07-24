@@ -1,11 +1,10 @@
-"use client"
 
 import { createContext, useContext, useState, useEffect } from "react"
 import axios from "axios"
 import toast from "react-hot-toast"
 
 const AuthContext = createContext()
-const API = import.meta.env.VITE_API_URL // 👈 Base URL
+const API = import.meta.env.VITE_API_URL 
 
 export const useAuth = () => {
   const context = useContext(AuthContext)

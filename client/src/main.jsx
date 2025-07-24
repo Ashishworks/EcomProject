@@ -7,7 +7,7 @@ import { AuthProvider } from "./context/AuthContext.jsx"
 import { CartProvider } from "./context/CartContext.jsx"
 import { Toaster } from "react-hot-toast"
 
-// Create router with future flags to suppress warnings
+
 const router = createBrowserRouter(
   [
     {
@@ -16,7 +16,7 @@ const router = createBrowserRouter(
         <AuthProvider>
           <CartProvider>
             <App />
-            <Toaster position="top-right" />
+            <Toaster position="top-center" />
           </CartProvider>
         </AuthProvider>
       ),

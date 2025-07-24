@@ -1,4 +1,3 @@
-"use client"
 
 import { Link } from "react-router-dom"
 import { ShoppingCart, Star } from "lucide-react"

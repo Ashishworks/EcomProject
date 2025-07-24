@@ -1,4 +1,3 @@
-"use client"
 
 import { createContext, useContext, useState, useEffect } from "react"
 import axios from "axios"
@@ -6,7 +5,7 @@ import toast from "react-hot-toast"
 import { useAuth } from "./AuthContext"
 
 const CartContext = createContext()
-const API = import.meta.env.VITE_API_URL // ✅ Base API URL
+const API = import.meta.env.VITE_API_URL 
 
 export const useCart = () => {
   const context = useContext(CartContext)
