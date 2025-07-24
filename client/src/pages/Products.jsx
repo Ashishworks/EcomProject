@@ -15,28 +15,22 @@ const Products = () => {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
-  const [totalPages, setTotalPages] = useState(1)
 
   useEffect(() => {
     fetchProducts()
     fetchCategories()
-  }, [currentPage, selectedCategory, searchTerm])
+  }, [selectedCategory, searchTerm])
 
   const fetchProducts = async () => {
     try {
       setLoading(true)
-      const params = {
-        page: currentPage,
-        limit: 12,
-      }
+      const params = {}
 
       if (selectedCategory) params.category = selectedCategory
       if (searchTerm) params.search = searchTerm
 
       const response = await axios.get("/api/products", { params })
       setProducts(response.data.products)
-      setTotalPages(response.data.totalPages)
     } catch (error) {
       toast.error("Failed to fetch products")
     } finally {
@@ -55,33 +49,25 @@ const Products = () => {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    setCurrentPage(1)
     fetchProducts()
   }
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category)
-    setCurrentPage(1)
-  }
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page)
-    window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
   return (
     <div className="space-y-8">
-
       <div className="text-center bg-gray-200 py-2 rounded-3xl">
-        <h1 className="text-6xl font-bold text-gray-900 mb-8 flex justify-center"><RotatingText
-          texts={['WELCOME TO THE BEST', 'ONLINE SHOPPING PLATFORM', `CURATORS SHOP`]} /></h1>
-        
+        <h1 className="text-6xl font-bold text-gray-900 mb-8 flex justify-center">
+          <RotatingText texts={['WELCOME TO THE BEST', 'ONLINE SHOPPING PLATFORM', `CURATORS SHOP`]} />
+        </h1>
       </div>
+
       <div className="w-[200%] scale-50 origin-top-left bg-black text-white p-4 rounded-3xl mt-2">
         <div className="w-[83%] flex justify-center ">
           <ScrollVelocity texts={['UPTO 50% OFF']} />
         </div>
-
       </div>
 
       <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
@@ -131,43 +117,6 @@ const Products = () => {
           ))}
         </div>
       )}
-
-      {totalPages > 1 && (
-        <div className="flex justify-center items-center space-x-2 mt-8">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
-          >
-            Previous
-          </button>
-
-          {[...Array(totalPages)].map((_, index) => {
-            const page = index + 1
-            return (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={`px-4 py-2 border rounded-lg ${currentPage === page
-                  ? "bg-primary-600 text-white border-primary-600 "
-                  : "border-gray-300 hover:bg-gray-50"
-                  }`}
-              >
-                {page}
-              </button>
-            )
-          })}
-
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="px-4 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
-          >
-            Next
-          </button>
-        </div>
-      )}
-
     </div>
   )
 }
