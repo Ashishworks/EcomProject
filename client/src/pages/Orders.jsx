@@ -6,6 +6,8 @@ import { Package, Calendar, CreditCard, Truck } from "lucide-react"
 import axios from "axios"
 import toast from "react-hot-toast"
 
+const API = import.meta.env.VITE_API_URL
+
 const Orders = () => {
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
@@ -17,7 +19,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     try {
       setLoading(true)
-      const response = await axios.get("/api/orders/my-orders")
+      const response = await axios.get(`${API}/api/orders/my-orders`)
       setOrders(response.data)
     } catch (error) {
       toast.error("Failed to fetch orders")

@@ -9,6 +9,8 @@ import axios from "axios"
 import toast from "react-hot-toast"
 import { PinContainer } from "../animations/PinContainer"
 
+const API = import.meta.env.VITE_API_URL // ✅ Base backend URL
+
 const Checkout = () => {
   const [shippingAddress, setShippingAddress] = useState({
     street: "",
@@ -61,7 +63,7 @@ const Checkout = () => {
         price: item.product.price,
       }))
 
-      const orderResponse = await axios.post("/api/orders/create", {
+      const orderResponse = await axios.post(`${API}/api/orders/create`, {
         items: orderItems,
         totalAmount: total,
         shippingAddress,
@@ -69,7 +71,7 @@ const Checkout = () => {
 
       const order = orderResponse.data.order
 
-      const paymentResponse = await axios.post("/api/payment/create-order", {
+      const paymentResponse = await axios.post(`${API}/api/payment/create-order`, {
         amount: total,
         currency: "INR",
       })
@@ -78,14 +80,14 @@ const Checkout = () => {
 
       const options = {
         key: import.meta.env.VITE_RAZORPAY_KEY_ID || "rzp_test_1234567890",
-        amount: amount,
-        currency: currency,
+        amount,
+        currency,
         name: "Curators Shop",
         description: "Order Payment",
         order_id: orderId,
         handler: async (response) => {
           try {
-            await axios.post("/api/payment/verify", {
+            await axios.post(`${API}/api/payment/verify`, {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
@@ -251,7 +253,6 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
-
           </div>
 
           <div className="card p-6">

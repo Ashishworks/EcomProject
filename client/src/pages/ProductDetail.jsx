@@ -8,6 +8,8 @@ import { useCart } from "../context/CartContext"
 import toast from "react-hot-toast"
 import { CometCard } from "../animations/CometCard"
 
+const API = import.meta.env.VITE_API_URL
+
 const ProductDetail = () => {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
@@ -22,7 +24,7 @@ const ProductDetail = () => {
   const fetchProduct = async () => {
     try {
       setLoading(true)
-      const response = await axios.get(`/api/products/${id}`)
+      const response = await axios.get(`${API}/api/products/${id}`)
       setProduct(response.data)
     } catch (error) {
       toast.error("Failed to fetch product details")
@@ -74,14 +76,13 @@ const ProductDetail = () => {
       </Link>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        
         <div className="space-y-3">
           <CometCard>
-          <img
-            src={product.image || "/placeholder.svg"}
-            alt={product.name}
-            className="w-full h-96 lg:h-[500px] object-contain rounded-lg shadow-lg"
-          />
+            <img
+              src={product.image || "/placeholder.svg"}
+              alt={product.name}
+              className="w-full h-96 lg:h-[500px] object-contain rounded-lg shadow-lg"
+            />
           </CometCard>
         </div>
 

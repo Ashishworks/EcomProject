@@ -6,6 +6,7 @@ import toast from "react-hot-toast"
 import { useAuth } from "./AuthContext"
 
 const CartContext = createContext()
+const API = import.meta.env.VITE_API_URL // ✅ Base API URL
 
 export const useCart = () => {
   const context = useContext(CartContext)
@@ -31,7 +32,7 @@ export const CartProvider = ({ children }) => {
   const fetchCart = async () => {
     try {
       setLoading(true)
-      const response = await axios.get("/api/cart")
+      const response = await axios.get(`${API}/api/cart`)
       setCartItems(response.data)
     } catch (error) {
       console.error("Error fetching cart:", error)
@@ -47,7 +48,7 @@ export const CartProvider = ({ children }) => {
     }
 
     try {
-      const response = await axios.post("/api/cart/add", { productId, quantity })
+      const response = await axios.post(`${API}/api/cart/add`, { productId, quantity })
       setCartItems(response.data.cart)
       toast.success("Item added to cart!")
     } catch (error) {
@@ -58,7 +59,7 @@ export const CartProvider = ({ children }) => {
 
   const updateCartItem = async (productId, quantity) => {
     try {
-      const response = await axios.put("/api/cart/update", { productId, quantity })
+      const response = await axios.put(`${API}/api/cart/update`, { productId, quantity })
       setCartItems(response.data.cart)
     } catch (error) {
       const message = error.response?.data?.message || "Failed to update cart"
@@ -68,7 +69,7 @@ export const CartProvider = ({ children }) => {
 
   const removeFromCart = async (productId) => {
     try {
-      const response = await axios.delete(`/api/cart/remove/${productId}`)
+      const response = await axios.delete(`${API}/api/cart/remove/${productId}`)
       setCartItems(response.data.cart)
       toast.success("Item removed from cart")
     } catch (error) {
@@ -79,7 +80,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = async () => {
     try {
-      await axios.delete("/api/cart/clear")
+      await axios.delete(`${API}/api/cart/clear`)
       setCartItems([])
       toast.success("Cart cleared")
     } catch (error) {

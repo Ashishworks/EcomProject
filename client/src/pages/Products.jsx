@@ -9,6 +9,8 @@ import RotatingText from "../animations/RotatingText"
 import ScrollVelocity from "../animations/ScrollVelocity"
 import { BackgroundLines } from "../animations/BackgorundLines"
 
+const API = import.meta.env.VITE_API_URL
+
 const Products = () => {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
@@ -29,7 +31,7 @@ const Products = () => {
       if (selectedCategory) params.category = selectedCategory
       if (searchTerm) params.search = searchTerm
 
-      const response = await axios.get("/api/products", { params })
+      const response = await axios.get(`${API}/api/products`, { params })
       setProducts(response.data.products)
     } catch (error) {
       toast.error("Failed to fetch products")
@@ -40,7 +42,7 @@ const Products = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await axios.get("/api/products/categories/all")
+      const response = await axios.get(`${API}/api/products/categories/all`)
       setCategories(response.data)
     } catch (error) {
       console.error("Failed to fetch categories")
