@@ -24,6 +24,7 @@ A full-featured, responsive e-commerce application built with the MERN stack (Mo
 - Responsive design for mobile and desktop
 - Product listing page with thumbnails and prices
 - Product details page with full description and images
+- Search and filter functionality for products
 - Cart page to review and update quantities
 - Authentication: Register & Login
 - Checkout page with order summary and confirmation
