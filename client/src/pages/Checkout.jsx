@@ -7,6 +7,7 @@ import { useCart } from "../context/CartContext"
 import { useAuth } from "../context/AuthContext"
 import axios from "axios"
 import toast from "react-hot-toast"
+import { PinContainer } from "../animations/PinContainer"
 
 const Checkout = () => {
   const [shippingAddress, setShippingAddress] = useState({
@@ -250,6 +251,7 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
+
           </div>
 
           <div className="card p-6">

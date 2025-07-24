@@ -48,13 +48,13 @@ const Cart = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-4 ">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
+        <div className="lg:col-span-2 space-y-4  ">
           {cartItems
             .filter((item) => item && item.product) 
             .map((item) => (
 
-              <div key={item.product._id} className="card p-2 bg-black">
+              <div key={item.product._id} className="card p-2 bg-black rounded-3xl">
                 <SpotlightCard spotlightColor="rgba(5, 220, 244, 1)">
                   <div className="flex items-center space-x-4">
                     <img
@@ -124,7 +124,7 @@ const Cart = () => {
 
         <div className="lg:col-span-1">
 
-          <div className="card sticky top-24 p-2 bg-black">
+          <div className="card sticky top-24 p-2 bg-black rounded-3xl">
             <SpotlightCard>
               <h2 className="text-xl font-bold text-white mb-4 ">Order Summary</h2>
               <div className="space-y-3 mb-6">
