@@ -54,8 +54,8 @@ const Cart = () => {
             .filter((item) => item && item.product) 
             .map((item) => (
 
-              <div key={item.product._id} className="card p-2 bg-black rounded-3xl">
-                <SpotlightCard spotlightColor="rgba(5, 220, 244, 1)">
+              <div key={item.product._id} className="card  bg-black rounded-3xl">
+                <SpotlightCard spotlightColor="rgba(255, 255, 255, 1)">
                   <div className="flex items-center space-x-4">
                     <img
                       src={item.product.image || "/placeholder.svg"}
@@ -66,26 +66,26 @@ const Cart = () => {
                     <div className="flex-1">
                       <Link
                         to={`/products/${item.product._id}`}
-                        className="text-lg font-semibold text-white hover:text-primary-600 transition-colors"
+                        className="text-lg font-semibold   hover:text-primary-600 transition-colors"
                       >
                         {item.product.name}
                       </Link>
-                      <p className="text-white text-sm mt-1">
+                      <p className="  text-sm mt-1">
                         ₹{item.product.price.toLocaleString()} each
                       </p>
                     </div>
 
                     <div className="flex items-center space-x-3">
-                      <div className="flex items-center border border-white rounded-lg">
+                      <div className="flex items-center border border-white rounded-lg ">
                         <button
                           onClick={() =>
                             handleQuantityChange(item.product._id, item.quantity - 1)
                           }
                           className="p-2 hover:bg-white transition-colors"
                         >
-                          <Minus className="w-4 h-4 text-white" />
+                          <Minus className="w-4 h-4 " />
                         </button>
-                        <span className="px-4 py-2 border-x border-white min-w-16 text-center text-white">
+                        <span className="px-4 py-2 border-x border-white min-w-16 text-center  ">
                           {item.quantity}
                         </span>
                         <button
@@ -95,7 +95,7 @@ const Cart = () => {
                           className="p-2 hover:bg-white transition-colors"
                           disabled={item.quantity >= item.product.stock}
                         >
-                          <Plus className="w-4 h-4 text-white" />
+                          <Plus className="w-4 h-4  " />
                         </button>
                       </div>
 
@@ -109,7 +109,7 @@ const Cart = () => {
                   </div>
 
                   <div className="mt-4 flex justify-between items-center">
-                    <span className="text-sm text-white">
+                    <span className="text-sm  ">
                       Subtotal: ₹{(item.product.price * item.quantity).toLocaleString()}
                     </span>
                     {item.quantity >= item.product.stock && (
@@ -124,24 +124,24 @@ const Cart = () => {
 
         <div className="lg:col-span-1">
 
-          <div className="card sticky top-24 p-2 bg-black rounded-3xl">
+          <div className="card sticky top-24 bg-black rounded-3xl">
             <SpotlightCard>
-              <h2 className="text-xl font-bold text-white mb-4 ">Order Summary</h2>
+              <h2 className="text-xl font-bold   mb-4 ">Order Summary</h2>
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
-                  <span className="text-white">Subtotal</span>
-                  <span className="font-medium text-white">₹{total.toLocaleString()}</span>
+                  <span className=" ">Subtotal</span>
+                  <span className="font-medium  ">₹{total.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-white">Shipping</span>
-                  <span className="font-medium text-white">Free</span>
+                  <span className=" ">Shipping</span>
+                  <span className="font-medium  ">Free</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-white">Tax</span>
-                  <span className="font-medium text-white">₹{Math.round(total * 0.18).toLocaleString()}</span>
+                  <span className=" ">Tax</span>
+                  <span className="font-medium  ">₹{Math.round(total * 0.18).toLocaleString()}</span>
                 </div>
                 <div className="border-t pt-3">
-                  <div className="flex justify-between text-lg font-bold text-white">
+                  <div className="flex justify-between text-lg font-bold  ">
                     <span>Total</span>
                     <span>₹{Math.round(total * 1.18).toLocaleString()}</span>
                   </div>

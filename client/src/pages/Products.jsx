@@ -149,7 +149,7 @@ const Products = () => {
                 key={page}
                 onClick={() => handlePageChange(page)}
                 className={`px-4 py-2 border rounded-lg ${currentPage === page
-                  ? "bg-primary-600 text-white border-primary-600"
+                  ? "bg-primary-600 text-white border-primary-600 "
                   : "border-gray-300 hover:bg-gray-50"
                   }`}
               >

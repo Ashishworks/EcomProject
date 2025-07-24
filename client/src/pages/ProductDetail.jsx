@@ -148,7 +148,7 @@ const ProductDetail = () => {
 
               <button
                 onClick={handleAddToCart}
-                className="w-full btn-primary text-lg py-3 flex items-center justify-center"
+                className="w-full btn-primary text-lg py-3 flex items-center justify-center bg-black"
               >
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Add to Cart
