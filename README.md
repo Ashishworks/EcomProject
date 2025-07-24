@@ -10,6 +10,7 @@ A full-featured, responsive e-commerce application built with the MERN stack (Mo
 - TailwindCSS
 - Axios (for API calls)
 - React Bits & Aceternity (UI animations and enhancements)
+- Lucide React (icon library)
 
 ### Backend
 - Node.js with Express
@@ -38,3 +39,4 @@ A full-featured, responsive e-commerce application built with the MERN stack (Mo
   - Orders (POST)
 - Secure routes with JWT middleware
 - Mongoose models for Products, Users, Orders
+- Razorpay (payment gateway)
