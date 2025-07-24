@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom"
-import { ShoppingBag, Truck, Shield, Headphones } from "lucide-react"
 import Particles from "../animations/Particles"
 import ShinyText from "../animations/ShinyText"
 import CurvedLoop from "../animations/CurvedLoop"
 
 const Home = () => {
   return (
-    <div className="space-y-8">
-      {/* CTA Section */}
-      <section className="bg-primary-600 text-white rounded-2xl py-16 px-8 text-center relative overflow-hidden py-40">
+    <div>
+      <section className="bg-primary-600 text-white rounded-2xl py-16 px-8 text-center relative py-40">
         <div className="absolute inset-0 z-0">
           <Particles moveParticlesOnHover={true} />
         </div>

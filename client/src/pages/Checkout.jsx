@@ -7,8 +7,9 @@ import { useAuth } from "../context/AuthContext"
 import axios from "axios"
 import toast from "react-hot-toast"
 import { PinContainer } from "../animations/PinContainer"
+import SpotlightCard from "../animations/SpotLightCard"
 
-const API = import.meta.env.VITE_API_URL 
+const API = import.meta.env.VITE_API_URL
 
 const Checkout = () => {
   const [shippingAddress, setShippingAddress] = useState({
@@ -132,7 +133,8 @@ const Checkout = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-6">
-          <div className="card p-6">
+          <div className="card p-4 rounded-2xl">
+            <SpotlightCard >
             <div className="flex items-center mb-4">
               <MapPin className="w-5 h-5 text-primary-600 mr-2" />
               <h2 className="text-xl font-semibold">Shipping Address</h2>
@@ -201,6 +203,7 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
+            </SpotlightCard>
           </div>
         </div>
 
@@ -212,6 +215,7 @@ const Checkout = () => {
             </div>
 
             <div className="space-y-4">
+              <SpotlightCard spotlightColor="rgba(255, 255, 255, 1)">
               {cartItems
                 .filter((item) => item && item.product)
                 .map((item) => (
@@ -230,6 +234,7 @@ const Checkout = () => {
                     </span>
                   </div>
                 ))}
+                </SpotlightCard>
             </div>
 
             <div className="border-t mt-6 pt-6 space-y-3">
