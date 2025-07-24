@@ -47,9 +47,6 @@ const Navbar = () => {
 
             {user ? (
               <div className="flex items-center space-x-4">
-                <Link to="/orders" className="text-gray-700 hover:text-primary-600 transition-colors">
-                  Orders
-                </Link>
                 <span className="text-gray-700">Hi, {user.name}</span>
                 <button
                   onClick={handleLogout}
@@ -62,9 +59,9 @@ const Navbar = () => {
             ) : (
               <div className="flex items-center space-x-4">
                 <Link to="/login" className="text-gray-700 hover:text-primary-600 transition-colors">
-                  Login
+                  <b>Login</b>
                 </Link>
-                <Link to="/register" className="btn-primary">
+                <Link to="/register" className="btn-primary bg-black">
                   Register
                 </Link>
               </div>
@@ -104,13 +101,7 @@ const Navbar = () => {
 
               {user ? (
                 <>
-                  <Link
-                    to="/orders"
-                    className="text-gray-700 hover:text-primary-600 transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Orders
-                  </Link>
+
                   <span className="text-gray-700">Hi, {user.name}</span>
                   <button
                     onClick={handleLogout}
